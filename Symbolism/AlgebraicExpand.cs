@@ -1,65 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Symbolism.ExpandProduct;
+﻿using System.Linq;
 using Symbolism.ExpandPower;
+using Symbolism.ExpandProduct;
 
 namespace Symbolism
 {
-    namespace AlgebraicExpand
+  namespace AlgebraicExpand
+  {
+    public static class Extensions
     {
-        public static class Extensions
+      public static MathObject AlgebraicExpand(this MathObject u)
+      {
+        if (u is Equation)
         {
-            public static MathObject AlgebraicExpand(this MathObject u)
-            {
-                if (u is Equation)
-                {
-                    var eq = u as Equation;
-
-                    return eq.a.AlgebraicExpand() == eq.b.AlgebraicExpand();
-                }
-
-                if (u is Sum)
-                {
-                    return new Sum()
-                    { elts = (u as Sum).elts.Select(elt => elt.AlgebraicExpand()).ToList() }
-                    .Simplify();
-                }
-
-                if (u is Product)
-                {
-                    var v = (u as Product).elts[0];
-
-                    return v.AlgebraicExpand()
-                        .ExpandProduct( (u / v).AlgebraicExpand() );
-                }
-
-                if (u is Power)
-                {
-                    var bas = (u as Power).bas;
-                    var exp = (u as Power).exp;
-
-                    if (exp is Integer && (exp as Integer).val >= 2)
-                        return bas.AlgebraicExpand().ExpandPower((exp as Integer).val);
-                    else 
-                        return u;
-                }
-
-                if (u is Function)
-                {
-                    return new Function() 
-                    { 
-                        name = (u as Function).name,
-                        proc = (u as Function).proc,
-                        args = (u as Function).args.ConvertAll(elt => elt.AlgebraicExpand())
-                    }.Simplify();
-                }
-
-                return u;
-            }
+          var eq = (Equation)u;
+          return eq.a.AlgebraicExpand() == eq.b.AlgebraicExpand();
         }
+        if (u is Sum)
+        {
+          return new Sum { elts = ((Sum)u).elts.Select(elt => elt.AlgebraicExpand()).ToList() }
+          .Simplify();
+        }
+        if (u is Product)
+        {
+          var v = ((Product)u).elts[0];
+          return v.AlgebraicExpand()
+              .ExpandProduct((u / v).AlgebraicExpand());
+        }
+        if (u is Power)
+        {
+          var bas = ((Power)u).bas;
+          var exp = ((Power)u).exp;
+          if (exp is Integer && (exp as Integer).val >= 2)
+            return bas.AlgebraicExpand().ExpandPower((exp as Integer).val);
+          return u;
+        }
+        if (u is Function)
+        {
+          return new Function
+          {
+            name = ((Function)u).name,
+            proc = ((Function)u).proc,
+            args = ((Function)u).args.ConvertAll(elt => elt.AlgebraicExpand())
+          }.Simplify();
+        }
+        return u;
+      }
     }
-    
+  }
 }

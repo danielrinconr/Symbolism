@@ -1,44 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Symbolism.SimplifyLogical
 {
-    public static class Extensions
+  public static class Extensions
+  {
+    static bool HasDuplicates(this IEnumerable<MathObject> ls)
     {
-        static bool HasDuplicates(this IEnumerable<MathObject> ls)
-        {
-            foreach (var elt in ls) if (ls.Count(item => item.Equals(elt)) > 1) return true;
-            
-            return false;
-        }
-
-        static IEnumerable<MathObject> RemoveDuplicates(this IEnumerable<MathObject> seq)
-        {
-            var ls = new List<MathObject>();
-
-            foreach (var elt in seq)
-                if (ls.Any(item => item.Equals(elt)) == false)
-                    ls.Add(elt);
-
-            return ls;
-        }
-
-        public static MathObject SimplifyLogical(this MathObject expr)
-        {
-
-            if (expr is And && (expr as And).args.HasDuplicates())
-                return new And() { args = (expr as And).args.RemoveDuplicates().ToList() };
-
-            if (expr is Or && (expr as Or).args.HasDuplicates())
-                return
-                    new Or() { args = (expr as Or).args.RemoveDuplicates().ToList() }
-                    .SimplifyLogical();
-
-            if (expr is Or) return (expr as Or).Map(elt => elt.SimplifyLogical());
-
-            return expr;
-        }
+      return ls.Any(elt => ls.Count(item => item.Equals(elt)) > 1);
     }
+    static IEnumerable<MathObject> RemoveDuplicates(this IEnumerable<MathObject> seq)
+    {
+      List<MathObject> ls = new List<MathObject>();
+      foreach (MathObject elt in seq.Where(elt => ls.Any(item => item.Equals(elt)) == false))
+        ls.Add(elt);
+      return ls;
+    }
+    public static MathObject SimplifyLogical(this MathObject expr)
+    {
+      while (true)
+      {
+        if (expr is And && ((And) expr).args.HasDuplicates())
+          return new And { args = ((And) expr).args.RemoveDuplicates().ToList() };
+        if (expr is Or && ((Or) expr).args.HasDuplicates())
+        {
+          expr = new Or { args = ((Or) expr).args.RemoveDuplicates().ToList() };
+          continue;
+        }
+        if (expr is Or) return ((Or) expr).Map(elt => elt.SimplifyLogical());
+        return expr;
+      }
+    }
+  }
 }

@@ -1,0 +1,10 @@
+E:\Descargas\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Utils\bin\Debug\Utils.dll
+E:\Descargas\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Utils\bin\Debug\Utils.pdb
+E:\Descargas\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
+E:\Descargas\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Utils\obj\Debug\Utils.dll
+E:\Descargas\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Symbolism-e6cf94395a92127b7b25c97748ced065433f00b1\Utils\obj\Debug\Utils.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Utils\bin\Debug\Utils.dll
+E:\Descargas\Symbolism-C#\Symbolism-C#\Utils\bin\Debug\Utils.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Utils\obj\Debug\Utils.dll
+E:\Descargas\Symbolism-C#\Symbolism-C#\Utils\obj\Debug\Utils.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache

@@ -1,0 +1,9 @@
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Tests.exe
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Tests.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Symbolism.dll
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Utils.dll
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Symbolism.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\bin\Debug\Utils.pdb
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\obj\x86\Debug\Tests.csprojResolveAssemblyReference.cache
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\obj\x86\Debug\Tests.exe
+E:\Descargas\Symbolism-C#\Symbolism-C#\Tests\obj\x86\Debug\Tests.pdb
